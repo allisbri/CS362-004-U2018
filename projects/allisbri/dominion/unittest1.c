@@ -6,7 +6,7 @@
  *      gcc -o testUpdateCoins -g  testUpdateCoins.c dominion.o rngs.o $(CFLAGS)
  * -----------------------------------------------------------------------
  */
-
+ 
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -33,7 +33,7 @@ int main() {
     int silvers[MAX_HAND];
     int golds[MAX_HAND];
     for (i = 0; i < MAX_HAND; i++)
-    {
+    { 
         coppers[i] = copper;
         silvers[i] = silver;
         golds[i] = gold;

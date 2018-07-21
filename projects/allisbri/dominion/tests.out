@@ -1,0 +1,446 @@
+TESTING updateCoins():
+Test player 0 with 1 treasure card(s) and 0 bonus.
+G.coins = 1, expected = 1
+G.coins = 2, expected = 2
+G.coins = 3, expected = 3
+Test player 0 with 1 treasure card(s) and 1 bonus.
+G.coins = 2, expected = 2
+G.coins = 3, expected = 3
+G.coins = 4, expected = 4
+Test player 0 with 1 treasure card(s) and 2 bonus.
+G.coins = 3, expected = 3
+G.coins = 4, expected = 4
+G.coins = 5, expected = 5
+Test player 0 with 1 treasure card(s) and 3 bonus.
+G.coins = 4, expected = 4
+G.coins = 5, expected = 5
+G.coins = 6, expected = 6
+Test player 0 with 1 treasure card(s) and 4 bonus.
+G.coins = 5, expected = 5
+G.coins = 6, expected = 6
+G.coins = 7, expected = 7
+Test player 0 with 1 treasure card(s) and 5 bonus.
+G.coins = 6, expected = 6
+G.coins = 7, expected = 7
+G.coins = 8, expected = 8
+Test player 0 with 1 treasure card(s) and 6 bonus.
+G.coins = 7, expected = 7
+G.coins = 8, expected = 8
+G.coins = 9, expected = 9
+Test player 0 with 1 treasure card(s) and 7 bonus.
+G.coins = 8, expected = 8
+G.coins = 9, expected = 9
+G.coins = 10, expected = 10
+Test player 0 with 1 treasure card(s) and 8 bonus.
+G.coins = 9, expected = 9
+G.coins = 10, expected = 10
+G.coins = 11, expected = 11
+Test player 0 with 1 treasure card(s) and 9 bonus.
+G.coins = 10, expected = 10
+G.coins = 11, expected = 11
+G.coins = 12, expected = 12
+Test player 0 with 1 treasure card(s) and 10 bonus.
+G.coins = 11, expected = 11
+G.coins = 12, expected = 12
+G.coins = 13, expected = 13
+Test player 0 with 2 treasure card(s) and 0 bonus.
+G.coins = 2, expected = 2
+G.coins = 4, expected = 4
+G.coins = 6, expected = 6
+Test player 0 with 2 treasure card(s) and 1 bonus.
+G.coins = 3, expected = 3
+G.coins = 5, expected = 5
+G.coins = 7, expected = 7
+Test player 0 with 2 treasure card(s) and 2 bonus.
+G.coins = 4, expected = 4
+G.coins = 6, expected = 6
+G.coins = 8, expected = 8
+Test player 0 with 2 treasure card(s) and 3 bonus.
+G.coins = 5, expected = 5
+G.coins = 7, expected = 7
+G.coins = 9, expected = 9
+Test player 0 with 2 treasure card(s) and 4 bonus.
+G.coins = 6, expected = 6
+G.coins = 8, expected = 8
+G.coins = 10, expected = 10
+Test player 0 with 2 treasure card(s) and 5 bonus.
+G.coins = 7, expected = 7
+G.coins = 9, expected = 9
+G.coins = 11, expected = 11
+Test player 0 with 2 treasure card(s) and 6 bonus.
+G.coins = 8, expected = 8
+G.coins = 10, expected = 10
+G.coins = 12, expected = 12
+Test player 0 with 2 treasure card(s) and 7 bonus.
+G.coins = 9, expected = 9
+G.coins = 11, expected = 11
+G.coins = 13, expected = 13
+Test player 0 with 2 treasure card(s) and 8 bonus.
+G.coins = 10, expected = 10
+G.coins = 12, expected = 12
+G.coins = 14, expected = 14
+Test player 0 with 2 treasure card(s) and 9 bonus.
+G.coins = 11, expected = 11
+G.coins = 13, expected = 13
+G.coins = 15, expected = 15
+Test player 0 with 2 treasure card(s) and 10 bonus.
+G.coins = 12, expected = 12
+G.coins = 14, expected = 14
+G.coins = 16, expected = 16
+Test player 0 with 3 treasure card(s) and 0 bonus.
+G.coins = 3, expected = 3
+G.coins = 6, expected = 6
+G.coins = 9, expected = 9
+Test player 0 with 3 treasure card(s) and 1 bonus.
+G.coins = 4, expected = 4
+G.coins = 7, expected = 7
+G.coins = 10, expected = 10
+Test player 0 with 3 treasure card(s) and 2 bonus.
+G.coins = 5, expected = 5
+G.coins = 8, expected = 8
+G.coins = 11, expected = 11
+Test player 0 with 3 treasure card(s) and 3 bonus.
+G.coins = 6, expected = 6
+G.coins = 9, expected = 9
+G.coins = 12, expected = 12
+Test player 0 with 3 treasure card(s) and 4 bonus.
+G.coins = 7, expected = 7
+G.coins = 10, expected = 10
+G.coins = 13, expected = 13
+Test player 0 with 3 treasure card(s) and 5 bonus.
+G.coins = 8, expected = 8
+G.coins = 11, expected = 11
+G.coins = 14, expected = 14
+Test player 0 with 3 treasure card(s) and 6 bonus.
+G.coins = 9, expected = 9
+G.coins = 12, expected = 12
+G.coins = 15, expected = 15
+Test player 0 with 3 treasure card(s) and 7 bonus.
+G.coins = 10, expected = 10
+G.coins = 13, expected = 13
+G.coins = 16, expected = 16
+Test player 0 with 3 treasure card(s) and 8 bonus.
+G.coins = 11, expected = 11
+G.coins = 14, expected = 14
+G.coins = 17, expected = 17
+Test player 0 with 3 treasure card(s) and 9 bonus.
+G.coins = 12, expected = 12
+G.coins = 15, expected = 15
+G.coins = 18, expected = 18
+Test player 0 with 3 treasure card(s) and 10 bonus.
+G.coins = 13, expected = 13
+G.coins = 16, expected = 16
+G.coins = 19, expected = 19
+Test player 0 with 4 treasure card(s) and 0 bonus.
+G.coins = 4, expected = 4
+G.coins = 8, expected = 8
+G.coins = 12, expected = 12
+Test player 0 with 4 treasure card(s) and 1 bonus.
+G.coins = 5, expected = 5
+G.coins = 9, expected = 9
+G.coins = 13, expected = 13
+Test player 0 with 4 treasure card(s) and 2 bonus.
+G.coins = 6, expected = 6
+G.coins = 10, expected = 10
+G.coins = 14, expected = 14
+Test player 0 with 4 treasure card(s) and 3 bonus.
+G.coins = 7, expected = 7
+G.coins = 11, expected = 11
+G.coins = 15, expected = 15
+Test player 0 with 4 treasure card(s) and 4 bonus.
+G.coins = 8, expected = 8
+G.coins = 12, expected = 12
+G.coins = 16, expected = 16
+Test player 0 with 4 treasure card(s) and 5 bonus.
+G.coins = 9, expected = 9
+G.coins = 13, expected = 13
+G.coins = 17, expected = 17
+Test player 0 with 4 treasure card(s) and 6 bonus.
+G.coins = 10, expected = 10
+G.coins = 14, expected = 14
+G.coins = 18, expected = 18
+Test player 0 with 4 treasure card(s) and 7 bonus.
+G.coins = 11, expected = 11
+G.coins = 15, expected = 15
+G.coins = 19, expected = 19
+Test player 0 with 4 treasure card(s) and 8 bonus.
+G.coins = 12, expected = 12
+G.coins = 16, expected = 16
+G.coins = 20, expected = 20
+Test player 0 with 4 treasure card(s) and 9 bonus.
+G.coins = 13, expected = 13
+G.coins = 17, expected = 17
+G.coins = 21, expected = 21
+Test player 0 with 4 treasure card(s) and 10 bonus.
+G.coins = 14, expected = 14
+G.coins = 18, expected = 18
+G.coins = 22, expected = 22
+Test player 0 with 5 treasure card(s) and 0 bonus.
+G.coins = 5, expected = 5
+G.coins = 10, expected = 10
+G.coins = 15, expected = 15
+Test player 0 with 5 treasure card(s) and 1 bonus.
+G.coins = 6, expected = 6
+G.coins = 11, expected = 11
+G.coins = 16, expected = 16
+Test player 0 with 5 treasure card(s) and 2 bonus.
+G.coins = 7, expected = 7
+G.coins = 12, expected = 12
+G.coins = 17, expected = 17
+Test player 0 with 5 treasure card(s) and 3 bonus.
+G.coins = 8, expected = 8
+G.coins = 13, expected = 13
+G.coins = 18, expected = 18
+Test player 0 with 5 treasure card(s) and 4 bonus.
+G.coins = 9, expected = 9
+G.coins = 14, expected = 14
+G.coins = 19, expected = 19
+Test player 0 with 5 treasure card(s) and 5 bonus.
+G.coins = 10, expected = 10
+G.coins = 15, expected = 15
+G.coins = 20, expected = 20
+Test player 0 with 5 treasure card(s) and 6 bonus.
+G.coins = 11, expected = 11
+G.coins = 16, expected = 16
+G.coins = 21, expected = 21
+Test player 0 with 5 treasure card(s) and 7 bonus.
+G.coins = 12, expected = 12
+G.coins = 17, expected = 17
+G.coins = 22, expected = 22
+Test player 0 with 5 treasure card(s) and 8 bonus.
+G.coins = 13, expected = 13
+G.coins = 18, expected = 18
+G.coins = 23, expected = 23
+Test player 0 with 5 treasure card(s) and 9 bonus.
+G.coins = 14, expected = 14
+G.coins = 19, expected = 19
+G.coins = 24, expected = 24
+Test player 0 with 5 treasure card(s) and 10 bonus.
+G.coins = 15, expected = 15
+G.coins = 20, expected = 20
+G.coins = 25, expected = 25
+Test player 1 with 1 treasure card(s) and 0 bonus.
+G.coins = 1, expected = 1
+G.coins = 2, expected = 2
+G.coins = 3, expected = 3
+Test player 1 with 1 treasure card(s) and 1 bonus.
+G.coins = 2, expected = 2
+G.coins = 3, expected = 3
+G.coins = 4, expected = 4
+Test player 1 with 1 treasure card(s) and 2 bonus.
+G.coins = 3, expected = 3
+G.coins = 4, expected = 4
+G.coins = 5, expected = 5
+Test player 1 with 1 treasure card(s) and 3 bonus.
+G.coins = 4, expected = 4
+G.coins = 5, expected = 5
+G.coins = 6, expected = 6
+Test player 1 with 1 treasure card(s) and 4 bonus.
+G.coins = 5, expected = 5
+G.coins = 6, expected = 6
+G.coins = 7, expected = 7
+Test player 1 with 1 treasure card(s) and 5 bonus.
+G.coins = 6, expected = 6
+G.coins = 7, expected = 7
+G.coins = 8, expected = 8
+Test player 1 with 1 treasure card(s) and 6 bonus.
+G.coins = 7, expected = 7
+G.coins = 8, expected = 8
+G.coins = 9, expected = 9
+Test player 1 with 1 treasure card(s) and 7 bonus.
+G.coins = 8, expected = 8
+G.coins = 9, expected = 9
+G.coins = 10, expected = 10
+Test player 1 with 1 treasure card(s) and 8 bonus.
+G.coins = 9, expected = 9
+G.coins = 10, expected = 10
+G.coins = 11, expected = 11
+Test player 1 with 1 treasure card(s) and 9 bonus.
+G.coins = 10, expected = 10
+G.coins = 11, expected = 11
+G.coins = 12, expected = 12
+Test player 1 with 1 treasure card(s) and 10 bonus.
+G.coins = 11, expected = 11
+G.coins = 12, expected = 12
+G.coins = 13, expected = 13
+Test player 1 with 2 treasure card(s) and 0 bonus.
+G.coins = 2, expected = 2
+G.coins = 4, expected = 4
+G.coins = 6, expected = 6
+Test player 1 with 2 treasure card(s) and 1 bonus.
+G.coins = 3, expected = 3
+G.coins = 5, expected = 5
+G.coins = 7, expected = 7
+Test player 1 with 2 treasure card(s) and 2 bonus.
+G.coins = 4, expected = 4
+G.coins = 6, expected = 6
+G.coins = 8, expected = 8
+Test player 1 with 2 treasure card(s) and 3 bonus.
+G.coins = 5, expected = 5
+G.coins = 7, expected = 7
+G.coins = 9, expected = 9
+Test player 1 with 2 treasure card(s) and 4 bonus.
+G.coins = 6, expected = 6
+G.coins = 8, expected = 8
+G.coins = 10, expected = 10
+Test player 1 with 2 treasure card(s) and 5 bonus.
+G.coins = 7, expected = 7
+G.coins = 9, expected = 9
+G.coins = 11, expected = 11
+Test player 1 with 2 treasure card(s) and 6 bonus.
+G.coins = 8, expected = 8
+G.coins = 10, expected = 10
+G.coins = 12, expected = 12
+Test player 1 with 2 treasure card(s) and 7 bonus.
+G.coins = 9, expected = 9
+G.coins = 11, expected = 11
+G.coins = 13, expected = 13
+Test player 1 with 2 treasure card(s) and 8 bonus.
+G.coins = 10, expected = 10
+G.coins = 12, expected = 12
+G.coins = 14, expected = 14
+Test player 1 with 2 treasure card(s) and 9 bonus.
+G.coins = 11, expected = 11
+G.coins = 13, expected = 13
+G.coins = 15, expected = 15
+Test player 1 with 2 treasure card(s) and 10 bonus.
+G.coins = 12, expected = 12
+G.coins = 14, expected = 14
+G.coins = 16, expected = 16
+Test player 1 with 3 treasure card(s) and 0 bonus.
+G.coins = 3, expected = 3
+G.coins = 6, expected = 6
+G.coins = 9, expected = 9
+Test player 1 with 3 treasure card(s) and 1 bonus.
+G.coins = 4, expected = 4
+G.coins = 7, expected = 7
+G.coins = 10, expected = 10
+Test player 1 with 3 treasure card(s) and 2 bonus.
+G.coins = 5, expected = 5
+G.coins = 8, expected = 8
+G.coins = 11, expected = 11
+Test player 1 with 3 treasure card(s) and 3 bonus.
+G.coins = 6, expected = 6
+G.coins = 9, expected = 9
+G.coins = 12, expected = 12
+Test player 1 with 3 treasure card(s) and 4 bonus.
+G.coins = 7, expected = 7
+G.coins = 10, expected = 10
+G.coins = 13, expected = 13
+Test player 1 with 3 treasure card(s) and 5 bonus.
+G.coins = 8, expected = 8
+G.coins = 11, expected = 11
+G.coins = 14, expected = 14
+Test player 1 with 3 treasure card(s) and 6 bonus.
+G.coins = 9, expected = 9
+G.coins = 12, expected = 12
+G.coins = 15, expected = 15
+Test player 1 with 3 treasure card(s) and 7 bonus.
+G.coins = 10, expected = 10
+G.coins = 13, expected = 13
+G.coins = 16, expected = 16
+Test player 1 with 3 treasure card(s) and 8 bonus.
+G.coins = 11, expected = 11
+G.coins = 14, expected = 14
+G.coins = 17, expected = 17
+Test player 1 with 3 treasure card(s) and 9 bonus.
+G.coins = 12, expected = 12
+G.coins = 15, expected = 15
+G.coins = 18, expected = 18
+Test player 1 with 3 treasure card(s) and 10 bonus.
+G.coins = 13, expected = 13
+G.coins = 16, expected = 16
+G.coins = 19, expected = 19
+Test player 1 with 4 treasure card(s) and 0 bonus.
+G.coins = 4, expected = 4
+G.coins = 8, expected = 8
+G.coins = 12, expected = 12
+Test player 1 with 4 treasure card(s) and 1 bonus.
+G.coins = 5, expected = 5
+G.coins = 9, expected = 9
+G.coins = 13, expected = 13
+Test player 1 with 4 treasure card(s) and 2 bonus.
+G.coins = 6, expected = 6
+G.coins = 10, expected = 10
+G.coins = 14, expected = 14
+Test player 1 with 4 treasure card(s) and 3 bonus.
+G.coins = 7, expected = 7
+G.coins = 11, expected = 11
+G.coins = 15, expected = 15
+Test player 1 with 4 treasure card(s) and 4 bonus.
+G.coins = 8, expected = 8
+G.coins = 12, expected = 12
+G.coins = 16, expected = 16
+Test player 1 with 4 treasure card(s) and 5 bonus.
+G.coins = 9, expected = 9
+G.coins = 13, expected = 13
+G.coins = 17, expected = 17
+Test player 1 with 4 treasure card(s) and 6 bonus.
+G.coins = 10, expected = 10
+G.coins = 14, expected = 14
+G.coins = 18, expected = 18
+Test player 1 with 4 treasure card(s) and 7 bonus.
+G.coins = 11, expected = 11
+G.coins = 15, expected = 15
+G.coins = 19, expected = 19
+Test player 1 with 4 treasure card(s) and 8 bonus.
+G.coins = 12, expected = 12
+G.coins = 16, expected = 16
+G.coins = 20, expected = 20
+Test player 1 with 4 treasure card(s) and 9 bonus.
+G.coins = 13, expected = 13
+G.coins = 17, expected = 17
+G.coins = 21, expected = 21
+Test player 1 with 4 treasure card(s) and 10 bonus.
+G.coins = 14, expected = 14
+G.coins = 18, expected = 18
+G.coins = 22, expected = 22
+Test player 1 with 5 treasure card(s) and 0 bonus.
+G.coins = 5, expected = 5
+G.coins = 10, expected = 10
+G.coins = 15, expected = 15
+Test player 1 with 5 treasure card(s) and 1 bonus.
+G.coins = 6, expected = 6
+G.coins = 11, expected = 11
+G.coins = 16, expected = 16
+Test player 1 with 5 treasure card(s) and 2 bonus.
+G.coins = 7, expected = 7
+G.coins = 12, expected = 12
+G.coins = 17, expected = 17
+Test player 1 with 5 treasure card(s) and 3 bonus.
+G.coins = 8, expected = 8
+G.coins = 13, expected = 13
+G.coins = 18, expected = 18
+Test player 1 with 5 treasure card(s) and 4 bonus.
+G.coins = 9, expected = 9
+G.coins = 14, expected = 14
+G.coins = 19, expected = 19
+Test player 1 with 5 treasure card(s) and 5 bonus.
+G.coins = 10, expected = 10
+G.coins = 15, expected = 15
+G.coins = 20, expected = 20
+Test player 1 with 5 treasure card(s) and 6 bonus.
+G.coins = 11, expected = 11
+G.coins = 16, expected = 16
+G.coins = 21, expected = 21
+Test player 1 with 5 treasure card(s) and 7 bonus.
+G.coins = 12, expected = 12
+G.coins = 17, expected = 17
+G.coins = 22, expected = 22
+Test player 1 with 5 treasure card(s) and 8 bonus.
+G.coins = 13, expected = 13
+G.coins = 18, expected = 18
+G.coins = 23, expected = 23
+Test player 1 with 5 treasure card(s) and 9 bonus.
+G.coins = 14, expected = 14
+G.coins = 19, expected = 19
+G.coins = 24, expected = 24
+Test player 1 with 5 treasure card(s) and 10 bonus.
+G.coins = 15, expected = 15
+G.coins = 20, expected = 20
+G.coins = 25, expected = 25
+All tests passed!
+File 'dominion.c'
+No executable lines
+Removing 'dominion.c.gcov'
+
