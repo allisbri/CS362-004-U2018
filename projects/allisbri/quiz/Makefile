@@ -1,4 +1,9 @@
 
+all: run
+
+run: testme
+	./testme
+
 testme: testme.o
 	gcc testme.o -o testme
 	
