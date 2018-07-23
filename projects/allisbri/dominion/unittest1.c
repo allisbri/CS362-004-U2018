@@ -52,7 +52,7 @@ int main() {
 					memcpy(G.hand[p], hand, sizeof(int) * handCount); // set all the cards to copper
 					//int chosenCard = hand[handPos];
 					discardCard(handPos, p, &G, trashFlag);
-					printf("\nHand count test:\n");
+					printf("\nTest 1: Hand count reduced by 1:\n");
 					int expectedHandCount = handCount - 1;
 					printf("Expected: handCount: %d\n", expectedHandCount);
 					printf("Actual: handCount: %d\n", G.handCount[p]);
@@ -67,7 +67,7 @@ int main() {
 					}
 					
 					if ((handCount - 1) == handPos){
-						printf("\nLast card discard test:\n");
+						printf("\n Test 2: Last card discard test:\n");
 						printf("Expected: handCount: %d last card: -1 \n",  handCount);
 						printf("Actual: handCount: %d last card: %d \n", G.handCount[p], G.hand[p][handPos]);
 						
@@ -81,7 +81,7 @@ int main() {
 						}
 					}
 					else{
-						printf("\nDiscard replacement test:\n");
+						printf("\nTest 3: Discard replacement test:\n");
 						printf("Expected: card: %d\n", hand[handCount - 1]);
 						printf("Actual: card: %d\n", G.hand[p][handPos]);
 						if (hand[handCount - 1] == G.hand[p][handPos]){
@@ -95,7 +95,7 @@ int main() {
 					}
 					
 					if (trashFlag == 0){
-						printf("\nNo trash flag, add to played card count and add to played pile, test:\n");
+						printf("\nTest 4: No trash flag, add to played card count and add to played pile, test:\n");
 						printf("Expected: played card count: 1, card: %d\n", hand[handPos]);
 						printf("Actual: played card count: %d, card: %d\n", G.playedCardCount, G.playedCards[G.playedCardCount - 1]);
 						if (G.playedCardCount == 1){
@@ -117,7 +117,7 @@ int main() {
 					}
 					
 					if (trashFlag == 1){
-						printf("\nTrash flag set test:\n");
+						printf("\nTest 5: Trash flag set test:\n");
 						printf("Expected: played card count: 0\n");
 						printf("Actual: played card count: %d\n", G.playedCardCount);
 						if (G.playedCardCount == 0){

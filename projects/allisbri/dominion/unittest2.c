@@ -17,6 +17,7 @@ int main() {
     int seed = 1000;
     int numPlayer = MAX_PLAYERS;
     int p, handCount, deckCount, discardCount;
+	p = 0;
 	int dCount;
 	int expectedCount;
     int k[10] = {adventurer, council_room, feast, gardens, mine
@@ -34,14 +35,12 @@ int main() {
 	int discard2[MAX] = {[0 ... (MAX - 1)] = copper};
 	
     printf("TESTING fullDeckCount():\n");
-    for (p = 0; p < numPlayer; p++)
+    for (handCount = 1; handCount <= MAX; handCount++)
     {
-        for (handCount = 1; handCount <= MAX; handCount++)
-        {
-			for (deckCount = 0; deckCount <= MAX; deckCount++)
+		for (deckCount = 0; deckCount <= MAX; deckCount++)
+		{
+			for (discardCount = 0; discardCount <= MAX; discardCount++)
 			{
-				for (discardCount = 0; discardCount <= MAX; discardCount++)
-				{
 					printf("p: %d, handCount: %d, deckCount: %d, discardCount: %d\n", p, handCount, deckCount, discardCount); 
 					memset(&G, 23, sizeof(struct gameState));   // clear the game state
 					initializeGame(numPlayer, k, seed, &G); // initialize a new game
@@ -55,12 +54,11 @@ int main() {
 					expectedCount = handCount + deckCount + discardCount;
 					dCount = fullDeckCount(p, adventurer, &G);
 
-					//printf("\nall cards adventurer -- adventurer count test:\n");
-
+					printf("\nTest 1: all adventurer count\n");
 					printf("Expected full deck count: %d, Actual full deck count: %d\n", expectedCount, dCount);
 
 					if (expectedCount == dCount){
-						//printf("passed full deck adventurer count test and");
+						printf("passed full deck adventurer count test and");
 						testPassCount++;
 					}
 					else{
@@ -76,22 +74,23 @@ int main() {
 					memcpy(G.hand[p], hand2, sizeof(int) * handCount); // set all the hand cards to adventurer
 					memcpy(G.deck[p], deck2, sizeof(int) * deckCount); // set all the deck cards to adventurer
 					memcpy(G.discard[p], discard2, sizeof(int) * discardCount); //set all the discard cards to adventurer
-				
+					
+					printf("\nTest 2: no adventurer count\n");
 					expectedCount = 0;
 					dCount = fullDeckCount(p, adventurer, &G);
-					//printf("\nall cards copper -- adventurer count test:\n");
+					printf("\nall cards copper -- adventurer count test:\n");
 
 					printf("Expected full deck count: %d, Actual full deck count: %d\n", expectedCount, dCount);
 
 					if (expectedCount == dCount){
-						//printf("passed full deck copper -- adventurer count test\n");
+						printf("passed full deck copper -- adventurer count test\n");
 						testPassCount++;
 					}
 					else{
 						printf("failed full deck copper -- adventurer count test\n");
 						testFailCount++;
 					}	
-				}
+				
 			}
 		}
 	}

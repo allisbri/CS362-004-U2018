@@ -47,7 +47,7 @@ int main() {
 			for (handPos = 0; handPos < MAX; handPos++)
 			{
 					G.whoseTurn = p;
-					printf("p: %d, handPos: %d\n", p, handPos); 
+					printf("Test 1: correct card return for player %d, handPos: %d\n", p, handPos);
 					if (p == 0){
 						expectedCard = hand1[handPos];
 						actualCard = handCard(handPos, &G);

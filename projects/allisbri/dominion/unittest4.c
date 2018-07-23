@@ -37,7 +37,7 @@ int main() {
 				G.whoseTurn = p;
 				G.handCount[p] = handCount;  
 					
-				printf("p: %d, handCount: %d\n", p, handCount); 
+				printf("Test 1: player %d, handCount: %d\n", p, handCount); 
 				numHandCards(&G);
 				expectedCount = handCount;
 				actualCount = numHandCards(&G);
