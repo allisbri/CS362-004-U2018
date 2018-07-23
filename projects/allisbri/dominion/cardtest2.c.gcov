@@ -1,0 +1,228 @@
+        -:    0:Source:cardtest2.c
+        -:    0:Graph:cardtest2.gcno
+        -:    0:Data:cardtest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* -----------------------------------------------------------------------
+        -:    2: * Much of the code used in "demonstration of how to write unit tests for dominion-base" from OSU CS362
+        -:    3: * is used in this file as a template.
+        -:    4: * -----------------------------------------------------------------------
+        -:    5: */
+        -:    6:
+        -:    7:#include "dominion.h"
+        -:    8:#include "dominion_helpers.h"
+        -:    9:#include <string.h>
+        -:   10:#include <stdio.h>
+        -:   11:#include <assert.h>
+        -:   12:#include "rngs.h"
+        -:   13:
+        1:   14:int main() {
+        1:   15:    int seed = 1000;
+        1:   16:    int numPlayer = MAX_PLAYERS;
+        1:   17:	int handCount = 5;
+        -:   18:
+        1:   19:    int k[10] = {adventurer, council_room, feast, gardens, mine
+        -:   20:               , remodel, smithy, village, baron, great_hall};
+        -:   21:    struct gameState G;
+        1:   22:	int testPassCount = 0;
+        1:   23:	int testFailCount = 0;
+        -:   24:	int totalTests;
+        1:   25:	int choice1 = 0;
+        1:   26:	int choice2 = 0;
+        1:   27:	int choice3 = 0;
+        1:   28:	int handPos = 1;
+        1:   29:	int bonus = 0;
+        -:   30:	int i;
+        -:   31:	int j;
+        -:   32:	
+        -:   33:	int expectedCard1;
+        -:   34:	int expectedCard2;
+        -:   35:	int p1ExHandCount;
+        -:   36:	int p1AcHandCount;
+        -:   37:	int p2AcHandCount;
+        -:   38:	int p3AcHandCount;
+        -:   39:	int p4AcHandCount;
+        -:   40:	int p1ExDeckCount;
+        -:   41:	int p1AcDeckCount;
+        -:   42:	int p2AcDeckCount;
+        -:   43:	int p3AcDeckCount;
+        -:   44:	int p4AcDeckCount;
+        1:   45:	int deckCount = 4; 
+        1:   46:	int hand1[5] = {adventurer, baron, village, smithy, remodel};
+        1:   47:	int hand2[5] = {adventurer, council_room, feast, gardens, mine};
+        1:   48:	int hand3[5] = {feast, council_room, remodel, mine, smithy};
+        1:   49:	int hand4[5] = {village, council_room, feast, mine, remodel};
+        1:   50:	int deckA[4] = {copper, copper, copper, copper};
+        1:   51:	int deckB[4] = {steward, adventurer, council_room, feast};
+        1:   52:	int deckC[4] = {silver, silver, silver, silver};
+        1:   53:	int deckD[4] = {remodel, adventurer, council_room, silver};
+        1:   54:	int deckE[4] = {gold, gold, gold, gold};
+        -:   55:
+        1:   56:    printf("TESTING adventurer:\n");
+        -:   57:	
+        6:   58:	for (j = 0; j < 5; j++){
+        5:   59:		memset(&G, 23, sizeof(struct gameState));   // clear the game state
+        5:   60:		initializeGame(numPlayer, k, seed, &G); // initialize a new game
+        5:   61:		G.whoseTurn = 0;
+        5:   62:		G.handCount[0] = handCount;  
+        5:   63:		G.handCount[1] = handCount;
+        5:   64:		G.handCount[2] = handCount;
+        5:   65:		G.handCount[3] = handCount;
+        5:   66:		G.deckCount[0] = deckCount;  
+        5:   67:		G.deckCount[1] = deckCount;
+        5:   68:		G.deckCount[2] = deckCount;
+        5:   69:		G.deckCount[3] = deckCount;
+        -:   70:		
+        5:   71:		memcpy(G.hand[0], hand1, sizeof(int) * handCount);
+        5:   72:		memcpy(G.hand[1], hand2, sizeof(int) * handCount);
+        5:   73:		memcpy(G.hand[2], hand3, sizeof(int) * handCount);
+        5:   74:		memcpy(G.hand[3], hand4, sizeof(int) * handCount);
+        -:   75:		
+        -:   76:		int sCount[25]; 
+        5:   77:		if (j == 0){
+        1:   78:			memcpy(G.deck[0], deckA, sizeof(int) * deckCount);
+        -:   79:		}
+        4:   80:		else if (j == 1){
+        1:   81:			memcpy(G.deck[0], deckB, sizeof(int) * deckCount);
+        -:   82:		}
+        3:   83:		else if (j == 2){
+        1:   84:			memcpy(G.deck[0], deckC, sizeof(int) * deckCount);
+        -:   85:		}
+        2:   86:		else if (j == 3){
+        1:   87:			memcpy(G.deck[0], deckD, sizeof(int) * deckCount);
+        -:   88:		}
+        1:   89:		else if (j == 4){
+        1:   90:			memcpy(G.deck[0], deckE, sizeof(int) * deckCount);
+        -:   91:		}
+        -:   92:		
+        5:   93:		memcpy(G.deck[1], deckB, sizeof(int) * deckCount);
+        5:   94:		memcpy(G.deck[2], deckC, sizeof(int) * deckCount);
+        5:   95:		memcpy(G.deck[3], deckD, sizeof(int) * deckCount);
+        5:   96:		memcpy(sCount, G.supplyCount, sizeof(int) * 25);
+        -:   97:		
+        5:   98:		cardEffect(adventurer, choice1, choice2, choice3, &G, handPos, &bonus);
+        -:   99:		
+        5:  100:		printf("\ntest 1: player 1 recieves correct number of cards, other players do not recieve any\n");
+        5:  101:		if (j == 0){
+        1:  102:			p1ExHandCount = handCount + 1; //accounting for discarded adventurer
+        -:  103:		}
+        4:  104:		else if (j == 1){
+        1:  105:			p1ExHandCount = handCount - 1; //accounting for discarded adventurer
+        -:  106:		}
+        3:  107:		else if (j == 2){
+        1:  108:			p1ExHandCount = handCount + 1; //accounting for discarded adventurer
+        -:  109:		}
+        2:  110:		else if (j == 3){
+        1:  111:			p1ExHandCount = handCount; //accounting for discarded adventurer
+        -:  112:		}
+        1:  113:		else if (j == 4){
+        1:  114:			p1ExHandCount = handCount + 1; //accounting for discarded adventurer
+        -:  115:		}
+        5:  116:		p1AcHandCount = G.handCount[0];
+        5:  117:		p2AcHandCount = G.handCount[1];
+        5:  118:		p3AcHandCount = G.handCount[2];
+        5:  119:		p4AcHandCount = G.handCount[3];
+        5:  120:		printf("player 1: Expected handCount: %d  Actual handCount: %d\n", p1ExHandCount, p1AcHandCount); 
+        5:  121:		printf("player 2: Expected handCount: %d  Actual handCount: %d\n", handCount, p2AcHandCount); 
+        5:  122:		printf("player 3: Expected handCount: %d  Actual handCount: %d\n", handCount, p3AcHandCount); 
+        5:  123:		printf("player 4: Expected handCount: %d  Actual handCount: %d\n", handCount, p4AcHandCount); 
+        5:  124:		if (p1ExHandCount == p1AcHandCount && p2AcHandCount == handCount && p3AcHandCount == handCount && p4AcHandCount == handCount){
+    #####:  125:			printf("passed test 1\n");
+    #####:  126:			testPassCount++;
+        -:  127:		}
+        -:  128:		else{
+        5:  129:			printf("failed test 1\n");
+        5:  130:			testFailCount++;
+        -:  131:		}
+        -:  132:		
+        5:  133:		printf("\ntest 2: player 1's deck is down by correct number of cards, other players decks do not change\n");
+        -:  134:		
+        5:  135:		if (j == 0){
+        1:  136:			p1ExDeckCount = deckCount - 2; 
+        -:  137:		}
+        4:  138:		else if (j == 1){
+        1:  139:			p1ExDeckCount = deckCount;  
+        -:  140:		}
+        3:  141:		else if (j == 2){
+        1:  142:			p1ExDeckCount = deckCount - 2;  
+        -:  143:		}
+        2:  144:		else if (j == 3){
+        1:  145:			p1ExDeckCount = deckCount - 1;  
+        -:  146:		}
+        1:  147:		else if (j == 3){
+    #####:  148:			p1ExDeckCount = deckCount - 2;  
+        -:  149:		}
+        -:  150:		
+        5:  151:		p1AcDeckCount = G.deckCount[0];
+        5:  152:		p2AcDeckCount = G.deckCount[1];
+        5:  153:		p3AcDeckCount = G.deckCount[2];
+        5:  154:		p4AcDeckCount = G.deckCount[3];	
+        5:  155:		printf("player 1: Expected deckCount: %d  Actual deckCount: %d\n", p1ExDeckCount, p1AcDeckCount); 
+        5:  156:		printf("player 2: Expected deckCount: %d  Actual deckCount: %d\n", deckCount, p2AcDeckCount); 
+        5:  157:		printf("player 3: Expected deckCount: %d  Actual deckCount: %d\n", deckCount, p3AcDeckCount); 
+        5:  158:		printf("player 4: Expected deckCount: %d  Actual deckCount: %d\n", deckCount, p4AcDeckCount); 			
+        5:  159:		if (p1ExDeckCount == p1AcDeckCount && p2AcDeckCount == deckCount && p3AcDeckCount == deckCount && p4AcDeckCount == deckCount){
+        2:  160:			printf("passed test 2\n");
+        2:  161:			testPassCount++;
+        -:  162:		}
+        -:  163:		else{
+        3:  164:			printf("failed test 2\n");
+        3:  165:			testFailCount++;
+        -:  166:		}
+        -:  167:		
+        5:  168:		printf("\ntest 3: no changes to province or kindom card piles\n");
+        5:  169:		int test3FailCount = 0;
+      130:  170:		for (i = 0; i < 25; i++){
+      125:  171:			printf("Expected supplyCount: %d  Actual supplyCount: %d\n", sCount[i], G.supplyCount[i]);
+      125:  172:			if (sCount[i] != G.supplyCount[i]){
+    #####:  173:				test3FailCount++;
+        -:  174:			}
+        -:  175:		}
+        5:  176:		if (test3FailCount > 0){
+    #####:  177:			printf("failed test 3\n");
+    #####:  178:			testFailCount++;
+        -:  179:		}
+        -:  180:		else{
+        5:  181:			printf("passed test 3\n");
+        5:  182:			testPassCount++;
+        -:  183:		}
+        -:  184:		
+        5:  185:		printf("\ntest 4: correct cards from player1's deck added to hand");
+        5:  186:		if (j == 0){
+        1:  187:			expectedCard1 = copper;
+        1:  188:			expectedCard2 = copper;
+        -:  189:		}
+        4:  190:		else if (j == 1){
+        1:  191:			expectedCard1 = G.hand[0][handCount - 2];
+        1:  192:			expectedCard2 = G.hand[0][handCount - 1];
+        -:  193:		}
+        3:  194:		else if (j == 2){
+        1:  195:			expectedCard1 = silver;
+        1:  196:			expectedCard2 = silver; 
+        -:  197:		}
+        2:  198:		else if (j == 3){
+        1:  199:			expectedCard1 = silver;
+        1:  200:			expectedCard2 = G.hand[0][handCount - 1]; 
+        -:  201:		}
+        1:  202:		else if (j == 3){
+    #####:  203:			expectedCard1 = gold;
+    #####:  204:			expectedCard2 = gold; 
+        -:  205:		}
+        -:  206:		
+        5:  207:		printf("Expected card1: %d  card2: %d\n", expectedCard1, expectedCard2);
+        5:  208:		printf("Actual card1: %d  card2: %d\n", G.hand[0][handCount - 2], G.hand[0][handCount - 1]);
+        5:  209:		if(expectedCard1 == G.hand[0][handCount - 2] && expectedCard2 == G.hand[0][handCount - 1]){
+        1:  210:			printf("passed test 4\n");
+        1:  211:			testPassCount++;
+        -:  212:		}
+        -:  213:		else{
+        4:  214:			printf("failed test 4\n");
+        4:  215:			testFailCount++;
+        -:  216:		}
+        -:  217:	}
+        1:  218:	totalTests = testFailCount + testPassCount;
+        1:  219:	printf("Passed %d out of %d tests\n", testPassCount, totalTests);
+        1:  220:	return 0;
+        -:  221:}
+        -:  222:	
+        -:  223:

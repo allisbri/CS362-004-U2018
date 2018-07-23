@@ -60,7 +60,7 @@ int main() {
 					printf("Expected full deck count: %d, Actual full deck count: %d\n", expectedCount, dCount);
 
 					if (expectedCount == dCount){
-						printf("passed full deck adventurer count test and");
+						//printf("passed full deck adventurer count test and");
 						testPassCount++;
 					}
 					else{
@@ -84,7 +84,7 @@ int main() {
 					printf("Expected full deck count: %d, Actual full deck count: %d\n", expectedCount, dCount);
 
 					if (expectedCount == dCount){
-						printf("passed full deck copper -- adventurer count test\n");
+						//printf("passed full deck copper -- adventurer count test\n");
 						testPassCount++;
 					}
 					else{
