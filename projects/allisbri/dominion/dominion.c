@@ -643,7 +643,7 @@ int getCost(int cardNumber)
 	return -1;
 }
 
-void smithyEffect(struct gameState *state, int handPos, int currentPlayer){
+int smithyEffect(struct gameState *state, int handPos, int currentPlayer){
 	int i;
 	for (i = 0; i < 4; i++)
 		{
@@ -652,9 +652,10 @@ void smithyEffect(struct gameState *state, int handPos, int currentPlayer){
 		
 		//discard card from hand
 		discardCard(handPos, currentPlayer, state, 0);
+		return 0;
 }
 
-void adventurerEffect(struct gameState *state, int currentPlayer, int drawntreasure, int *temphand, int z){
+int adventurerEffect(struct gameState *state, int currentPlayer, int drawntreasure, int *temphand, int z){
 
 	while(drawntreasure<2){
 			int cardDrawn;
@@ -663,7 +664,7 @@ void adventurerEffect(struct gameState *state, int currentPlayer, int drawntreas
 			}
 			drawCard(currentPlayer, state);
 			cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-			if (cardDrawn == copper || cardDrawn == silver)
+			if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 			drawntreasure++;
 			else{
 				temphand[z]=cardDrawn;
@@ -675,9 +676,10 @@ void adventurerEffect(struct gameState *state, int currentPlayer, int drawntreas
 			state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 			z=z-1;
 		}
+		return 0;
 }
 
-void tributeEffect(struct gameState *state, int *tributeRevealedCards, int nextPlayer, int currentPlayer){
+int tributeEffect(struct gameState *state, int *tributeRevealedCards, int nextPlayer, int currentPlayer){
 	int i;
 	if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1){
 			if (state->deckCount[nextPlayer] > 0){
@@ -734,9 +736,10 @@ void tributeEffect(struct gameState *state, int *tributeRevealedCards, int nextP
 				state->numActions = state->numActions + 2;
 			}
 		}
+		return 0;
 }
 
-void stewardEffect(int choice1, int choice2, int choice3, struct gameState *state, int handPos, int currentPlayer){
+int stewardEffect(int choice1, int choice2, int choice3, struct gameState *state, int handPos, int currentPlayer){
 	if (choice1 == 1)
 		{
 			//+2 cards
@@ -757,9 +760,10 @@ void stewardEffect(int choice1, int choice2, int choice3, struct gameState *stat
 		
 		//discard card from hand
 		discardCard(handPos, currentPlayer, state, 0);
+		return 0;
 }
 
-void cutpurseEffect(struct gameState *state, int handPos, int *bonus, int currentPlayer){ 
+int cutpurseEffect(struct gameState *state, int handPos, int *bonus, int currentPlayer){ 
 	int i;
 	int j;
 	int k;
@@ -792,6 +796,7 @@ void cutpurseEffect(struct gameState *state, int handPos, int *bonus, int curren
 
 		//discard played card from hand
 		discardCard(handPos, currentPlayer, state, 0);		
+		return 0;
 			
 }
 

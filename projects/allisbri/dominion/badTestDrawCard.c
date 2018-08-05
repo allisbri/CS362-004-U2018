@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 #include "rngs.h"
 
 #define DEBUG 0
@@ -12,6 +13,7 @@ int checkDrawCard(int p, struct gameState *post) {
   int r;
     
   r = drawCard (p, post);
+  return 0;
 }
 
 int main () {
@@ -34,11 +36,12 @@ int main () {
     for (i = 0; i < sizeof(struct gameState); i++) {
       ((char*)&G)[i] = floor(Random() * 256);
     }
+	printf("still going\n");
     p = floor(Random() * 1000);
     checkDrawCard(p, &G);
   }
 
   printf ("ALL TESTS OK\n");
 
-  exit(0);
+  return 0;
 }

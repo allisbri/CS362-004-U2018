@@ -12,8 +12,8 @@ playdom: dominion.o playdom.c
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
-badTestDrawCard: badTestDrawCard.c dominion.o rngs.o
-	gcc -o badTestDrawCard -g  badTestDrawCard.c dominion.o rngs.o $(CFLAGS)
+betterTestDrawCard: betterTestDrawCard.c dominion.o rngs.o
+	gcc -o betterTestDrawCard -g  betterTestDrawCard.c dominion.o rngs.o $(CFLAGS)
 
 testBuyCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
@@ -29,54 +29,12 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-unittestresults: dominion.o unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c  cardtest4.c rngs.o
+unittestresults: dominion.o cardtest2.c rngs.o
 	echo "Result for running unit tests:" > unittestingresults.out
-	
-	echo "unittest1.c:" >> unittestingresults.out
-	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
-	unittest1 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "unittest2.c:" >> unittestingresults.out
-	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
-	unittest2 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "unittest3.c:" >> unittestingresults.out
-	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
-	unittest3 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "unittest4.c:" >> unittestingresults.out
-	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
-	unittest4 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "cardtest1.c:" >> unittestingresults.out
-	gcc -o cardtest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest1 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
 	
 	echo "cardtest2.c:" >> unittestingresults.out
 	gcc -o cardtest2 cardtest2.c -g dominion.o rngs.o $(CFLAGS)
 	cardtest2 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "cardtest3.c:" >> unittestingresults.out
-	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest3 >> unittestingresults.out
-	gcov dominion.c >> unittestingresults.out
-	cat dominion.c.gcov >> unittestingresults.out
-	
-	echo "cardtest4.c:" >> unittestingresults.out
-	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
-	cardtest4 >> unittestingresults.out
 	gcov dominion.c >> unittestingresults.out
 	cat dominion.c.gcov >> unittestingresults.out
 	
