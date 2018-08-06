@@ -1037,13 +1037,15 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
 	case great_hall:
 		//+1 Card
+		printf("before drawCard");
 		drawCard(currentPlayer, state);
-		
+		printf("before numActions ++\n");
 		//+1 Actions
 		state->numActions++;
-		
+		printf("before discard\n");
 		//discard card from hand
 		discardCard(handPos, currentPlayer, state, 0);
+		printf("after discard\n");
 		return 0;
 		
 	case minion:
@@ -1294,11 +1296,13 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
 		//reduce number of cards in hand
 		state->handCount[currentPlayer]--;
 	}
+	
 	else if ( state->handCount[currentPlayer] == 1 ) //only one card in hand
 	{
 		//reduce number of cards in hand
 		state->handCount[currentPlayer]--;
 	}
+	
 	else 	
 	{
 		//replace discarded card with last card in hand
@@ -1308,7 +1312,6 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
 		//reduce number of cards in hand
 		state->handCount[currentPlayer]--;
 	}
-	
 	return 0;
 }
 

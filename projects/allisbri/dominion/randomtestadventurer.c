@@ -1,8 +1,13 @@
-/* -----------------------------------------------------------------------
- * Much of the code used in "demonstration of how to write unit tests for dominion-base" from OSU CS362
- * is used in this file as a template.
+ /* Brian Allison
+ *  CS362
+ *  Description: This is a random tester for adventurer card
  * -----------------------------------------------------------------------
+ * Some of the code here is similar to the code used in "betterTestDrawCard.c" from OSU CS362.
+ * That file was used as a template for this test.
+ * -----------------------------------------------------------------------
+ *
  */
+
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -36,8 +41,7 @@ int main() {
 	int p;
 	int c;
 	int cd;
-	int fd;
-	int f;
+
 	int exHand[] = {-1, -1, -1, -1};
 	int exDeck[] = {-1, -1, -1, -1};
 	int sCount[25]; 
@@ -50,7 +54,7 @@ int main() {
 	int choice1 = 0;
 	int choice2 = 0;
 	int choice3 = 0;
-	int handPos = 1;
+
 	int bonus = 0;
 	int i;
 	int j;
@@ -64,8 +68,7 @@ int main() {
 	for (n = 0; n < 2000; n++) {
 		c = 0;
 		cd = 0;
-		f = 0;
-		fd = 0;
+
 		closest = -1;
 		closest2 = -1;
 		for (i = 0; i < sizeof(struct gameState); i++) {
