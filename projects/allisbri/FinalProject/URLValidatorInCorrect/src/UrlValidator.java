@@ -313,8 +313,12 @@ public class UrlValidator implements Serializable {
             return false;
         }
 
+        //part of bug3, returns "" rather than NULL
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
-
+        //bug2, should not allow just http as a URL
+        //below if causes us to not enter below else
+        //since all other elements of a URL can be NULL, this
+        //results in a passing URL
         if ("http".equals(scheme)) {// Special case - file: allows an empty authority
             if (authority != null) {
                 if (authority.contains(":")) { // but cannot allow trailing :
@@ -324,11 +328,12 @@ public class UrlValidator implements Serializable {
             // drop through to continue validation
         } else { // not file:
             // Validate the authority
+        	// bug 5: capital letters result in invalid authority
             if (!isValidAuthority(authority)) {
                 return false;
             }
         }
-
+        //bug4 additional path results in return false (ex: /fb/bf
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
             return false;
         }
@@ -354,6 +359,7 @@ public class UrlValidator implements Serializable {
      * @return true if valid.
      */
     protected boolean isValidScheme(String scheme) {
+    	//bug1
         if (scheme == null) {
             return false;
         }
@@ -381,6 +387,7 @@ public class UrlValidator implements Serializable {
      * @return true if authority (hostname and port) is valid.
      */
     protected boolean isValidAuthority(String authority) {
+    	//part of bug3
         if (authority == null) {
             return false;
         }
@@ -390,7 +397,10 @@ public class UrlValidator implements Serializable {
             return true;
         }
         // convert to ASCII if possible
-        final String authorityASCII = DomainValidator.unicodeToASCII(authority);
+        //bug3 error occurs when passing "" to DomainValidator.unicodeToASCII
+        //bug4 error occurs when passing "a.a.a" to DomainValidator.unicodeToASCII
+        //bug5 error occurs when passing a valid URL with all capital letters
+         final String authorityASCII = DomainValidator.unicodeToASCII(authority);
 
         Matcher authorityMatcher = AUTHORITY_PATTERN.matcher(authorityASCII);
         if (!authorityMatcher.matches()) {
@@ -524,6 +534,7 @@ public class UrlValidator implements Serializable {
      *
      * @return whether the specified flag value is on.
      */
+    
     private boolean isOn(long flag) {
         return (options & flag) > 0;
     }
