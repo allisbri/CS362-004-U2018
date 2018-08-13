@@ -48,6 +48,33 @@ randomtestresults: dominion.o randomtestadventurer.c randomtestcard1.c rngs.o
 	gcov dominion.c >> randomtestcard2.out
 	cat dominion.c.gcov >> randomtestcard2.out
 	
+unittestresults: dominion.o unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c  cardtest4.c rngs.o
+	echo "Result for running unit tests:" > unittestingresults.out
+	
+	echo "cardtest1.c:" >> unittestingresults.out
+	gcc -o cardtest1 cardtest1.c -g dominion.o rngs.o $(CFLAGS)
+	cardtest1 >> unittestingresults.out
+	gcov dominion.c >> unittestingresults.out
+	cat dominion.c.gcov >> unittestingresults.out
+	
+	echo "cardtest2.c:" >> unittestingresults.out
+	gcc -o cardtest2 cardtest2.c -g dominion.o rngs.o $(CFLAGS)
+	cardtest2 >> unittestingresults.out
+	gcov dominion.c >> unittestingresults.out
+	cat dominion.c.gcov >> unittestingresults.out
+	
+	echo "cardtest3.c:" >> unittestingresults.out
+	gcc -o cardtest3 cardtest3.c -g dominion.o rngs.o $(CFLAGS)
+	cardtest3 >> unittestingresults.out
+	gcov dominion.c >> unittestingresults.out
+	cat dominion.c.gcov >> unittestingresults.out
+	
+	echo "cardtest4.c:" >> unittestingresults.out
+	gcc -o cardtest4 cardtest4.c -g dominion.o rngs.o $(CFLAGS)
+	cardtest4 >> unittestingresults.out
+	gcov dominion.c >> unittestingresults.out
+	cat dominion.c.gcov >> unittestingresults.out
+	
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
