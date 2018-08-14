@@ -1,5 +1,3 @@
-
-
 import java.util.Random;
 
 import org.junit.Test;
@@ -24,7 +22,13 @@ public class UrlValidatorTest extends TestCase {
 	String[] goodPorts = new String[] {":80", ":1234", "" };
 	String[] badPorts = new String[] {"80", ":a1234", ":-1", ":" };
 	String[] goodDomain = new String[] {"www.google.com", "www.wikipedia.org", "1.1.1.1" };
-	String[] badDomain = new String[] {"www.google.moc", "w3.wikipedia.org", "1.1.1.1.1.1.1.1", "" };
+    String[] badDomain = new String[] {"www.google.moc", "w3.wikipedia.org", "1.1.1.1.1.1.1.1", "" };
+    
+    String[] Path  = new String[] {"", "/path", "/path", "/path/path", "/1234567", "1234567", "//path", "path//path"  };
+    String[] Scheme  = new String[] {"https://", "http://", "ftp://", "https:/", "http//", "", "a:"  };
+    String[] Ports = new String[] {":80", ":1234", "", "80", ":a1234", ":-1", ":" };
+    String[] Domain = new String[] {"www.google.com", "www.wikipedia.org", "1.1.1.1", "www.google.moc", "w3.wikipedia.org", "1.1.1.1.1.1.1.1", "" };
+
 	
 	// Brian: stringbool array is the same as a ResultPair array. I created this
 	// class at the end of the
@@ -87,8 +91,8 @@ public class UrlValidatorTest extends TestCase {
    public UrlValidatorTest(String testName) {
       super(testName);
    }
-   
-   @Test
+ 
+  @Test
    public void testManualTest()
    {
 	   
@@ -99,7 +103,7 @@ public class UrlValidatorTest extends TestCase {
 	   
    }
 
-   @Test
+  @Test
    public void testYourFirstPartition() 
    {
 	 //You can use this function to implement your First Partition testing
@@ -142,7 +146,7 @@ public class UrlValidatorTest extends TestCase {
 				try {
 			  tryTest(testStrings[j]);  
 				}
-				catch(AssertionFailedError e)
+				catch(Exception e)
 			   	{
 					 System.out.println("Error in partion item " + (j+1));
 			   	 System.out.println(e);
@@ -151,16 +155,50 @@ public class UrlValidatorTest extends TestCase {
 		  }
 		 
 	   }
-
-
-
-
    }
+ 
    @Test
    public void testIsValid()
    {
-	   //You can use this function for programming based testing
+       //You can use this function for programming based testing
+       boolean expected;
+       boolean result;
+       
+       for (int i = 0; i<Scheme.length; i++)
+       {
+            for (int k = 0; k<Domain.length; k++)
+            {
+                for (int j = 0; j<Ports.length; j++)
+                {
+                    for (int l = 0; l<Path.length; l++)
+                    {
+                        for (int m = 0; m<query.length; m++)
+                        {
+                            StringBuilder testBuffer = new StringBuilder();
+                            testBuffer.append(Scheme[i]);
+                            testBuffer.append(Domain[k]);
+                            testBuffer.append(Ports[j]);
+                            testBuffer.append(Path[l]);
+                            testBuffer.append(query[m]);
+                            String url = testBuffer.toString();
+                            result = val.isValid(url);
+                            if(i < 6 && k < 3 && j < 3 && l < 3)
+                            {
+                                expected = true;
+                            }
+                            else
+                            {
+                                expected = false;
+                            }
+                            assertEquals(url, expected, result);
+                            System.out.println(url + " " + expected + " " + result);
 
+                        }
+                    }
+                }
+            }
+       }
+       System.out.println("All tests passed!");       
    }
    
    //Brian: We can use this to test the URLs against our expected results
